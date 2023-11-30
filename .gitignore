@@ -1,4 +1,3 @@
-extra/
-raw_video/subtitles.srt
-.env
-Clips/
+
+clips/video_1.mp4
+clips/video_2.mp4
