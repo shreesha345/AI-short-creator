@@ -1,65 +1,49 @@
-Project Name
 
-Description:
+# Clipster ✨
 
-Brief description of your project and what it does.
+Clipster is an AI-powered tool that turns long videos into short clips. It works best for videos with multiple speakers and topics, such as interviews and documentaries. Clipster finds the most engaging parts of the video, adds captions and transitions, and makes the clips ready for social media.
+![Logo](https://raw.githubusercontent.com/shreesha345/Clipster/main/clipster%20(1).jpg?token=GHSAT0AAAAAACIXSPWYBNISTTVYYV2GSJUQZLIPY6A)
 
-Table of Contents:
+# Result
 
-- Installation
-- Usage
-- Contributing
-- License
 
-Installation:
 
-Provide step-by-step instructions on how to install your project.
+## Installation
 
-Example installation command or steps:
-npm install your-package-name
+Step 1:
 
-Usage:
+install the packages for remotion to work.
+```bash
+  cd caption
+  npm install
+```
+step 2:
+second step install packages for python.
+```bash
+  cd ..
+  pip install -r requirements.txt
+```
+Step 3:
 
-Explain how users can use your project. Include examples or code snippets when possible.
+is to rename the .env copy to .env and paste your openAI credential.
 
-Example usage code:
-const yourModule = require('your-package-name');
-yourModule.doSomething();
+```bash
+  OPENAI_API_KEY='Your openAI key'
+```
 
-Contributing:
+step 4:
 
-If you want others to contribute to your project, provide guidelines on how to do so.
+run the script
+```bash
+  python main.py
+```
 
-Fork the project.
-Create a new branch.
-Make your changes and commit them.
-Submit a pull request.
+    
+## Contributing
 
-Please refer to the Contribution Guidelines for more details.
+Contributions are always welcome!
 
-License:
+See `contributing.md` for ways to get started.
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Please adhere to this project's `code of conduct`.
 
-Acknowledgments:
-
-Give credit to any external libraries, tools, or individuals that your project relies on.
-
-Contact:
-
-Provide contact information or links to discussions, forums, etc.
-
-Changelog:
-
-Keep a record of changes made in each version. Follow a consistent format.
-
-- v1.0.0 (YYYY-MM-DD):
-  - Initial release.
-
-Roadmap:
-
-Outline future plans and features for the project.
-
-Security Information:
-
-If applicable, provide guidance on responsible disclosure for security vulnerabilities.
