@@ -2,7 +2,8 @@
 # AI-short-creator ✨
 
 AI-short-creator is an AI-powered tool that turns long videos into short clips. It works best for videos with multiple speakers and topics, such as interviews and documentaries. Clipster finds the most engaging parts of the video, adds captions and transitions, and makes the clips ready for social media.
-<img src="https://th.bing.com/th/id/OIG.DXZZsyt9aBRpjM2P6F5U?pid=ImgGn" alt="drawing" style="width:200px;"/>
+
+<img src="https://th.bing.com/th/id/OIG.DXZZsyt9aBRpjM2P6F5U?pid=ImgGn" alt="drawing" style="width:250px;"/>
 
 # Result
 
