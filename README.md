@@ -7,6 +7,7 @@ AI-short-creator is an AI-powered tool that turns long videos into short clips. 
 
 # Result
 
+<img src="https://github.com/shreesha345/AI-short-creator/blob/main/video.gif" alt="output" style="width:400px;"/>
 
 
 ## Installation
