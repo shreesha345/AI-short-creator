@@ -21,12 +21,22 @@ install the packages for remotion to work.
   cd caption
   npm install
 ```
+
+Replace the line with an environment marker:
+```bash
+tensorflow-intel==2.15.0; platform_system == "Windows"
+tensorflow==2.15.0; platform_system != "Windows"
+```
+
 step 2:
 second step install packages for python.
 ```bash
   cd ..
   pip install -r requirements.txt
 ```
+
+This keeps it portable: Windows uses tensorflow-intel, Linux (Docker) uses tensorflow.
+
 Step 3:
 
 is to rename the .env copy to .env and paste your openAI credential.

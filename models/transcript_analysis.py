@@ -66,8 +66,8 @@ def analyze_transcript(subtitle_file_path):
 
     return json.loads(combined_response)
 
-# Specify the path to your subtitle file
-subtitle_file_path = 'raw_video/subtitles.srt'
+# # Specify the path to your subtitle file
+# subtitle_file_path = 'raw_video/subtitles.srt'
 
-# Analyze the transcript and save the output as JSON
-analyze_transcript(subtitle_file_path)
+# # Analyze the transcript and save the output as JSON
+# analyze_transcript(subtitle_file_path)
