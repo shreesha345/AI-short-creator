@@ -66,7 +66,7 @@ def extract_subtitles(input_audio, output_path='D:\\AI-video-maker\\final work\\
     except Exception as e:
         print(f"Error: {e}")
 
-if __name__ == "__main__":
+def download_video():
     # Replace 'your_video_url' with the actual URL of the YouTube video
     video_url = input("Enter the YouTube video URL: ")
 

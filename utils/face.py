@@ -150,7 +150,7 @@ def process_video(file):
 def subtitle(file):
     pass
 
-def main():
+def detect_main():
     # Get the video files
     files = [file for file in os.listdir(INPUT_DIR) if file.endswith(('.mp4', '.avi', '.mov'))]
 
@@ -165,6 +165,3 @@ def main():
 
     # Close the progress bar
     pbar.close()
-
-if __name__ == '__main__':
-    main()

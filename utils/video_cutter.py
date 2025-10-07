@@ -32,7 +32,7 @@ def cut_video(input_video_path, output_dir, json_file_path):
     # Close the video clip
     video_clip.close()
 
-if __name__ == "__main__":
+def start_cut_video():
     # Replace 'your_input_video.mp4', 'output_directory', and 'your_json_file.json' with your actual file paths
     input_video_path = 'raw_video/video.mp4'
     output_directory = 'Clips'

@@ -19,7 +19,7 @@ def rename_and_copy(video_path, output_folder, caption_folder):
 def run_stable_ts(audio_path, subtitle_path):
     subprocess.run(['stable-ts', audio_path, '-o', subtitle_path])
 
-def main():
+def post_process():
     input_folder = 'output'
 
     # Ensure the input folder exists
@@ -55,6 +55,3 @@ def main():
             os.system("npm run build")
 
             print(f"Processed video: {video_file}")
-
-if __name__ == "__main__":
-    main()
