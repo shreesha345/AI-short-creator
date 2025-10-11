@@ -1,60 +1,70 @@
 import os
-import subprocess
+
+from moviepy import concatenate_videoclips
 from moviepy.video.io.VideoFileClip import VideoFileClip
-from pydub import AudioSegment
-import stable_whisper
-import shutil
-def extract_audio(video_path, audio_path):
-    video_clip = VideoFileClip(video_path)
-    audio_clip = video_clip.audio
-    audio_clip.write_audiofile(audio_path, codec='mp3')
-    video_clip.close()
 
-def rename_and_copy(video_path, output_folder, caption_folder):
-    video_name = os.path.basename(video_path)
-    new_video_path = os.path.join(caption_folder, 'video.mp4')
-    os.rename(video_path, new_video_path)
-    return new_video_path
+DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "data"))
+INPUT_DIR = os.path.join(DATA_DIR, "output", "final_clips")
+OUTPUT_DIR = os.path.join(DATA_DIR, "output", "final_video")
 
-def run_stable_ts(audio_path, subtitle_path):
-    subprocess.run(['stable-ts', audio_path, '-o', subtitle_path])
+
+def combine_clips(clips_directory, output_path):
+    """
+    Finds all video clips in a directory, sorts them, and combines them
+    into a single output video file.
+
+    Args:
+        clips_directory (str): The path to the directory containing the video clips.
+        output_path (str): The path to save the final concatenated video.
+    """
+    try:
+        # Find all .mp4 files that start with 'best_'
+        clip_files = [
+            f
+            for f in os.listdir(clips_directory)
+            if f.endswith(".mp4") and f.startswith("best_")
+        ]
+
+        if not clip_files:
+            print("Error: No processed clips found in the directory to combine.")
+            return
+
+        # Sort clips numerically based on the number in the filename (e.g., best_video_1.mp4)
+        clip_files.sort(key=lambda x: int(x.split("_")[-1].split(".")[0]))
+
+        print(f"Found {len(clip_files)} clips to combine: {clip_files}")
+
+        video_clips = [
+            VideoFileClip(os.path.join(clips_directory, f)) for f in clip_files
+        ]
+
+        final_clip = concatenate_videoclips(video_clips, method="compose")
+
+        print(f"Writing final video to: {output_path}")
+        final_clip.write_videofile(
+            output_path, codec="libx264", audio_codec="aac", logger="bar"
+        )
+
+        for clip in video_clips:
+            clip.close()
+        final_clip.close()
+
+        print("Successfully created the final video.")
+
+    except Exception as e:
+        print(f"An error occurred during video processing: {e}")
+
 
 def main():
-    input_folder = 'output'
+    """
+    Main function to orchestrate the final video creation process.
+    """
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    # Ensure the input folder exists
-    if not os.path.exists(input_folder):
-        print("The specified input folder does not exist.")
-        return
+    final_video_path = os.path.join(OUTPUT_DIR, "final_video.mp4")
 
-    # Create necessary directories
-    output_folder = input_folder
-    caption_folder = os.path.join(os.path.dirname(input_folder), 'caption', 'public')
-    os.makedirs(caption_folder, exist_ok=True)
+    combine_clips(INPUT_DIR, final_video_path)
 
-    for video_file in os.listdir(input_folder):
-        if video_file.endswith('.mp4') and video_file.startswith('best_video_'):
-            video_path = os.path.join(input_folder, video_file)
-            audio_path = os.path.join(caption_folder, 'audio.mp3')
-            subtitle_path = os.path.join('D:\AI-video-maker\Final work', 'subtitles.srt')
-
-            # Extract audio from the video
-            extract_audio(video_path, audio_path)
-
-            # Rename and copy the video to the required folder
-            new_video_path = rename_and_copy(video_path, output_folder, caption_folder)
-
-            # Run stable-ts command
-            run_stable_ts(audio_path, subtitle_path)
-
-            # Move subtitles to the caption/public folder
-            shutil.move(subtitle_path, os.path.join(caption_folder, 'subtitles.srt'))
-
-            # Run npm run build command
-            os.chdir("D:\AI-video-maker\Final work\caption")
-            os.system("npm run build")
-
-            print(f"Processed video: {video_file}")
 
 if __name__ == "__main__":
     main()
