@@ -497,3 +497,25 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Output and Input videos
+/data/input/raw_video/*.mp4
+/data/input/raw_video/*.avi
+/data/input/raw_video/*.mov
+/data/input/raw_video/*.mkv
+/data/input/raw_video/*.webm
+/data/input/raw_video/audio.mp3
+/data/input/raw_video/subtitles.srt
+
+# Generated output files
+/data/output/
+/data/input/main_part.json
+
+# Temporary video files
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+*.gif
+*TEMP_MPY*.mp4
