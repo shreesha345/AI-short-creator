@@ -1,0 +1,39 @@
+[project]
+name = "ai-short-creator"
+version = "0.1.0"
+description = "AI-short-creator is an AI-powered tool that turns long videos into short clips."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "moviepy>=2.2.1",
+    "mtcnn>=1.0.0",
+    "numpy>=2.2.6",
+    "openai>=2.3.0",
+    "opencv-python>=4.12.0.88",
+    "pydub>=0.25.1",
+    "python-dotenv>=1.1.1",
+    "pytube>=15.0.0",
+    "stable-ts",
+    "tensorflow>=2.20.0",
+    "tqdm>=4.67.1",
+]
+
+[tool.uv.sources]
+stable-ts = { git = "https://github.com/jianfch/stable-ts.git", rev = "71b9f1fcbd1268f8bfe95bba6a394a2bc2e7339b" }
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.406",
+    "ruff>=0.14.0",
+]
+
+[tool.pyright]
+reportMissingImports = "none"
+reportMissingTypeStubs = "none"
+reportUnknownParameterType = "none"
+reportUnknownArgumentType = "none"
+reportUnknownMemberType = "none"
+reportUnknownVariableType = "none"
+reportAttributeAccessIssue = "none"
+reportArgumentType = "none"
+reportGeneralTypeIssues = "none"
