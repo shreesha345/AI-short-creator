@@ -1,0 +1,42 @@
+# Git
+.git/
+.gitignore
+
+# Environment files
+.env*
+!.env.example
+
+# Dependencies (will be installed in container)
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Documentation
+README.md
+*.md
+docs/
+
+# Docker files
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Data (mounted as volume)
+data/
+
+# Build artifacts
+dist/
+build/
+*.log
+.cache/
+
+# OS files
+Thumbs.db
