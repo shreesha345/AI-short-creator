@@ -1,0 +1,14 @@
+[
+  {
+    "start_time": 10.0,
+    "end_time": 45.0,
+    "description": "This is a mock description for a viral section.",
+    "duration": 35.0
+  },
+  {
+    "start_time": 50.0,
+    "end_time": 90.0,
+    "description": "This is another mock description for a viral section.",
+    "duration": 40.0
+  }
+]

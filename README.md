@@ -14,32 +14,103 @@ https://private-user-images.githubusercontent.com/71629361/287322097-13fffb50-11
 
 ## Installation
 
-Step 1:
+### 🐳 Docker Installation (Recommended)
 
-install the packages for remotion to work.
+The easiest way to run AI-short-creator is using Docker. This method handles all dependencies automatically.
+
+**Prerequisites:**
+- Docker Desktop installed ([Download here](https://docker.com/products/docker-desktop))
+- 4GB+ RAM available for Docker
+
+**Quick Start:**
 ```bash
-  cd caption
-  npm install
+# Clone the repository
+git clone <your-repo-url>
+cd AI-short-creator
+
+# Setup environment (for production mode)
+cp .env.example .env
+# Edit .env and add your OPENAI_API_KEY and YOUTUBE_URL
+
+# Run with the simple script
+./run.sh -t -d    # Test mode (uses mock data)
+# OR
+./run.sh -d       # Production mode (requires API keys)
 ```
-step 2:
-second step install packages for python.
-```bash
-  cd ..
-  pip install -r requirements.txt
-```
-Step 3:
 
-is to rename the .env copy to .env and paste your openAI credential.
-
+**Simple Commands:**
 ```bash
-  OPENAI_API_KEY='Your openAI key'
+./run.sh -t       # Test mode with mock data
+./run.sh          # Production mode  
+./run.sh -d       # Run in background
+./run.sh -b       # Force rebuild
+./run.sh -l       # Show logs
+./run.sh -s       # Stop services
+./run.sh -h       # Show help
 ```
 
-step 4:
-
-run the script
+**Direct Docker Commands:**
 ```bash
-  python main.py
+# Test mode (no API keys needed)
+TEST_MODE=true docker-compose up --build
+
+# Production mode
+docker-compose up --build
+
+# Background mode
+docker-compose up -d --build
+
+# Stop services
+docker-compose down
+```
+
+**Access URLs:**
+- Frontend: http://localhost:3000
+- Backend: http://localhost:8000
+
+### 💻 Local Installation
+
+For development without Docker:
+
+Step 1: Install frontend packages
+```bash
+cd frontend
+npm install
+```
+
+Step 2: Install Python packages
+```bash
+cd ..
+# Using uv (recommended)
+pip install uv
+uv sync
+
+# OR using pip
+pip install -r requirements.txt
+```
+
+Step 3: Setup environment variables
+```bash
+# Copy environment template
+cp .env.example .env
+
+# Edit .env and add your credentials
+OPENAI_API_KEY='Your openAI key'
+YOUTUBE_URL='https://youtube.com/watch?v=your-video-id'
+```
+
+Step 4: Run system requirements check
+```bash
+uv run python backend/check_requirements.py
+```
+
+Step 5: Run the application
+```bash
+# Run complete pipeline
+uv run python backend/main.py
+
+# OR run in test mode
+TEST_MODE=true uv run python backend/main.py
 ```
 
     
